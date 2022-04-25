@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FormsIcons.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:FormsIcons.Views;assembly=FormsIcons"
+    xmlns:local="clr-namespace:FormsIcons">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style Class="Option" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="20" />
+            </Style>
+            
+            <Style Class="Enabled" TargetType="Frame">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                            <GradientStop Color="#32a4f4" />
+                            <GradientStop Color="#027be3" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style Class="Title" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="Margin" Value="0,15,0,0" />
+            </Style>
+            <Style Class="SubTitle" TargetType="Label">
+                <Setter Property="TextColor" Value="DarkGray" />
+                <Setter Property="FontSize" Value="13" />
+            </Style>
+            <Style TargetType="views:TechieSwitch">
+                <Setter Property="ThumbBrush" Value="#0079e2" />
+                <Setter Property="BorderBrush" Value="#0079e2" />
+                <Setter Property="Margin" Value="0,15,0,0" />
+            </Style>
+            <Style Class="Enabled" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style Class="Enabled" TargetType="views:TechieSwitch">
+                <Setter Property="BorderBrush" Value="White" />
+                <Setter Property="ThumbBrush" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="#f1f4f6" />
+                <GradientStop Offset="1" Color="#F1F1F1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid
+        Padding="0,25,0,0"
+        RowDefinitions="Auto,Auto,*,Auto"
+        RowSpacing="20">
+
+        <StackLayout
+            Padding="15,0"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal">
+            <StackLayout>
+                <Label FontFamily="Bold" FontSize="20"  Text="Package Name/Bundle Indentifer"></Label>
+                <Label x:Name="lblPckageBundleInfo"></Label>
+            </StackLayout>
+        </StackLayout>
+
+        <ScrollView Padding="55">
+
+        <Grid
+            Grid.Row="2"
+            Margin="0,5,0,0"
+            Padding="3,0"
+            ColumnDefinitions="*"
+            ColumnSpacing="10"
+            RowDefinitions="Auto,Auto,Auto,Auto"
+            RowSpacing="5">
+
+            <Frame StyleClass="Option" HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label FontFamily="bold" Text="Solo Texto"></Label>
+                    <Entry Placeholder="Solo Texto" HorizontalOptions="FillAndExpand">
+                        <Entry.Behaviors>
+                            <local:SoloLetrasBehaivor>
+
+                            </local:SoloLetrasBehaivor>
+                        </Entry.Behaviors>
+
+                    </Entry>
+                </StackLayout>
+            </Frame>
+
+            <Frame Grid.Row="2"
+                   StyleClass="Option" HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label FontFamily="bold" Text="Solo Numeros"></Label>
+                    <Entry Placeholder="Solo Numeros" HorizontalOptions="FillAndExpand">
+                        <Entry.Behaviors>
+                            <local:SoloNumerosBehaivor>
+                                
+                            </local:SoloNumerosBehaivor>
+                        </Entry.Behaviors>
+                        
+                    </Entry>
+                    
+                </StackLayout>
+            </Frame>
+
+            <Frame Grid.Row="3"             
+                StyleClass="Option" HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label FontFamily="bold" Text="Capturar Fotografia"></Label>
+                    <Image x:Name="resultImage"></Image>
+                    <Button Text="Tomar Foto" x:Name="btnCargarImagen" Clicked="btnCargarImagen_Clicked"></Button>
+                    
+                </StackLayout>
+            </Frame>
+
+            <Frame Grid.Row="4"            
+                StyleClass="Option"
+                
+                   >
+                <StackLayout>
+                    <Label FontFamily="bold" FontSize="20" Text="Datos Personales"></Label>
+
+                        <Label FontFamily="bold" Text="Nombre"></Label>
+                        <Entry x:Name="txtNombre" Placeholder="Solo Texto" HorizontalOptions="FillAndExpand">
+                            <Entry.Behaviors>
+                                <local:SoloLetrasBehaivor>
+
+                                </local:SoloLetrasBehaivor>
+                            </Entry.Behaviors>
+                        </Entry>
+
+                        <Label FontFamily="bold" Text="Fecha Nacimiento"></Label>
+                            <DatePicker x:Name="datePickerFormulario" MinimumDate="01/01/1900"
+                                MaximumDate="04/24/2022"
+                                Date="06/21/2018" />    
+                            <Label FontFamily="bold" x:Name="lblEdadCalculada" Text="Edad Calculada: ?"></Label>
+                        <Entry IsVisible="false" FontFamily="bold" x:Name="txtEdadCalculada" Text=""></Entry>
+                   
+                        <Label FontFamily="bold" Text="Aos de Experiencia"></Label>
+                        <Entry Placeholder="Solo Numeros" x:Name="txtAniosExperiencia" HorizontalOptions="FillAndExpand">
+                            <Entry.Behaviors>
+                                <local:SoloNumerosBehaivor>
+                                </local:SoloNumerosBehaivor>
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Button Text="Guardar Datos" x:Name="btnGuardarDatosForm" Clicked="btnGuardarDatosForm_Clicked"></Button>
+
+                    </StackLayout>
+            </Frame>
+
+            <Frame
+                 Grid.Row="5"
+                StyleClass="Option"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout Spacing="0">
+
+                        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                                Command="{Binding RefreshCommand}">
+
+                            <CollectionView x:Name="collectionViewVista" ItemsSource="{Binding Ilist}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="2*"></RowDefinition>
+                                                <RowDefinition Height="2*"></RowDefinition>
+                                                <RowDefinition Height="2*"></RowDefinition>
+                                                <RowDefinition Height="2*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Source="{Binding rutaImagen}" Grid.Column="0"
+                                               Aspect="AspectFill" WidthRequest="50" 
+                                               HeightRequest="35"></Image>
+                                            <Label Text="{Binding nombre}" HeightRequest="35"  Grid.Column="1"></Label>
+                                            <Label Text="{Binding edad}" HeightRequest="35" Grid.Column="2"></Label>
+                                            <Label Text="{Binding aniosexperiencia}" HeightRequest="35" Grid.Column="3"></Label>
+
+                                            <BoxView Grid.Row="2" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="4"
+                                                 VerticalOptions="Center" HeightRequest="6" BackgroundColor="DarkBlue"></BoxView>
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                    </StackLayout>
+            </Frame>
+
+        </Grid>
+        </ScrollView>
+
+    </Grid>
+
+   
+
+</ContentPage>
+
