@@ -145,8 +145,8 @@
                                 Date="06/21/2018" />    
                             <Label FontFamily="bold" x:Name="lblEdadCalculada" Text="Edad Calculada: ?"></Label>
                         <Entry IsVisible="false" FontFamily="bold" x:Name="txtEdadCalculada" Text=""></Entry>
-                   
-                        <Label FontFamily="bold" Text="Aos de Experiencia"></Label>
+
+                        <Label FontFamily="bold" Text="Años de Experiencia"></Label>
                         <Entry Placeholder="Solo Numeros" x:Name="txtAniosExperiencia" HorizontalOptions="FillAndExpand">
                             <Entry.Behaviors>
                                 <local:SoloNumerosBehaivor>
